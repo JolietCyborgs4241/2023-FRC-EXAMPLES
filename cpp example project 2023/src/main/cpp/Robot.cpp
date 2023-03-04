@@ -8,6 +8,8 @@
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/motorcontrol/PWMSparkMax.h>
 
+#include <rev/CANSparkMax.h>
+
 class Robot : public frc::TimedRobot {
  public:
   Robot() {
@@ -46,8 +48,9 @@ class Robot : public frc::TimedRobot {
 
  private:
   // Robot drive system
-  frc::PWMSparkMax m_left{0};
-  frc::PWMSparkMax m_right{1};
+  // Robot drive system
+  rev::CANSparkMax m_left{1, rev::CANSparkMax::MotorType::kBrushless};
+  rev::CANSparkMax m_right{2, rev::CANSparkMax::MotorType::kBrushless};
   frc::DifferentialDrive m_robotDrive{m_left, m_right};
 
   frc::XboxController m_controller{0};
